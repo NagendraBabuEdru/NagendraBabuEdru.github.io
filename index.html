@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nagendra Babu Edru</title>
+  <meta name="description" content="Nagendra Babu Edru — developer. Projects, apps and experiments.">
+  <link rel="icon" href="https://avatars.githubusercontent.com/u/95692402?v=4">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fafaf9;
+      --surface: #ffffff;
+      --text: #1c1917;
+      --muted: #57534e;
+      --border: #e7e5e4;
+      --accent: #c2410c;
+      --accent-soft: #fff1e8;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #121110;
+        --surface: #1c1a19;
+        --text: #f5f5f4;
+        --muted: #a8a29e;
+        --border: #2e2b29;
+        --accent: #fb923c;
+        --accent-soft: #2a1a10;
+      }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Inter", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: inherit; }
+    .wrap { max-width: 880px; margin: 0 auto; padding: 0 20px; }
+
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 24px 0; }
+    nav .logo { font-weight: 700; text-decoration: none; letter-spacing: -0.02em; }
+    nav ul { display: flex; gap: 20px; list-style: none; }
+    nav ul a { text-decoration: none; color: var(--muted); font-size: 0.95rem; }
+    nav ul a:hover { color: var(--text); }
+
+    .hero { display: flex; gap: 32px; align-items: center; padding: 64px 0 72px; }
+    .hero img { width: 120px; height: 120px; border-radius: 50%; border: 3px solid var(--border); flex-shrink: 0; }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3rem); line-height: 1.1; letter-spacing: -0.03em; }
+    .hero p { color: var(--muted); font-size: 1.1rem; margin-top: 12px; max-width: 540px; }
+    .btns { display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap; }
+    .btn { display: inline-block; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 500; font-size: 0.95rem; }
+    .btn.primary { background: var(--accent); color: #fff; }
+    .btn.ghost { border: 1px solid var(--border); }
+    .btn:hover { opacity: 0.85; }
+
+    section { padding: 48px 0; border-top: 1px solid var(--border); }
+    h2 { font-size: 1.5rem; letter-spacing: -0.02em; margin-bottom: 24px; }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px; }
+    .card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+      padding: 20px; text-decoration: none; display: flex; flex-direction: column; gap: 8px;
+      transition: border-color 0.15s, transform 0.15s;
+    }
+    .card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .card h3 { font-size: 1.05rem; }
+    .card p { color: var(--muted); font-size: 0.92rem; flex-grow: 1; }
+    .tag { align-self: flex-start; font-size: 0.78rem; font-weight: 500; padding: 2px 10px; border-radius: 99px; background: var(--accent-soft); color: var(--accent); }
+
+    .skills { display: flex; flex-wrap: wrap; gap: 10px; }
+    .skills span { border: 1px solid var(--border); background: var(--surface); padding: 6px 14px; border-radius: 99px; font-size: 0.9rem; }
+
+    footer { padding: 40px 0; color: var(--muted); font-size: 0.9rem; border-top: 1px solid var(--border); }
+
+    @media (max-width: 600px) {
+      .hero { flex-direction: column; align-items: flex-start; padding: 32px 0 48px; }
+      nav ul { gap: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <nav>
+      <a class="logo" href="#">Nagendra</a>
+      <ul>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <header class="hero">
+      <img src="https://avatars.githubusercontent.com/u/95692402?v=4" alt="Nagendra Babu Edru">
+      <div>
+        <h1>Hi, I'm Nagendra Babu Edru</h1>
+        <p>I build apps and tools with Dart, TypeScript and Power BI, from task planners and fitness apps to video editing and data dashboards.</p>
+        <div class="btns">
+          <a class="btn primary" href="#projects">See my work</a>
+          <a class="btn ghost" href="https://github.com/NagendraBabuEdru" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </header>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="grid">
+        <a class="card" href="https://github.com/NagendraBabuEdru/VYAYAM" target="_blank" rel="noopener">
+          <h3>VYAYAM</h3>
+          <p>A fitness and exercise app.</p>
+          <span class="tag">Dart</span>
+        </a>
+        <a class="card" href="https://github.com/NagendraBabuEdru/Task_Planner" target="_blank" rel="noopener">
+          <h3>Task Planner</h3>
+          <p>An app for planning and keeping track of tasks.</p>
+          <span class="tag">Dart</span>
+        </a>
+        <a class="card" href="https://github.com/NagendraBabuEdru/Video_Editing" target="_blank" rel="noopener">
+          <h3>Video Editing</h3>
+          <p>A video editing app.</p>
+          <span class="tag">Dart</span>
+        </a>
+        <a class="card" href="https://github.com/NagendraBabuEdru/Group-Locator" target="_blank" rel="noopener">
+          <h3>Group Locator</h3>
+          <p>Find and share locations within a group.</p>
+          <span class="tag">Project</span>
+        </a>
+        <a class="card" href="https://github.com/NagendraBabuEdru/GPAT" target="_blank" rel="noopener">
+          <h3>GPAT</h3>
+          <p>A TypeScript project.</p>
+          <span class="tag">TypeScript</span>
+        </a>
+        <a class="card" href="https://github.com/NagendraBabuEdru/DevOps" target="_blank" rel="noopener">
+          <h3>DevOps</h3>
+          <p>DevOps practice and experiments.</p>
+          <span class="tag">Dart</span>
+        </a>
+        <a class="card" href="https://github.com/NagendraBabuEdru/powerbi" target="_blank" rel="noopener">
+          <h3>Power BI</h3>
+          <p>Data dashboards and reports built with Power BI.</p>
+          <span class="tag">Power BI</span>
+        </a>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="skills">
+        <span>Dart</span>
+        <span>Flutter</span>
+        <span>TypeScript</span>
+        <span>Power BI</span>
+        <span>Git &amp; GitHub</span>
+        <span>DevOps</span>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p style="color: var(--muted); margin-bottom: 20px;">Want to work together or just say hi? Reach me on GitHub.</p>
+      <div class="btns">
+        <a class="btn primary" href="https://github.com/NagendraBabuEdru" target="_blank" rel="noopener">github.com/NagendraBabuEdru</a>
+      </div>
+    </section>
+
+    <footer>© 2026 Nagendra Babu Edru</footer>
+  </div>
+</body>
+</html>
