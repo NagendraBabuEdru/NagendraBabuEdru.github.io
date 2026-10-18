@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GPAT Prep has moved</title>
+  <meta name="robots" content="noindex">
+  <link rel="canonical" href="https://kramavriddhi.com/apps/gpat/">
+  <style>
+    :root { color-scheme: dark; }
+    body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 16px; box-sizing: border-box;
+           background: #0f1320; color: #e6e8ef; font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+    main { max-width: 520px; width: 100%; background: #171c2c; border: 1px solid #262d44; border-radius: 14px; padding: 28px 24px; }
+    h1 { font-size: 1.4rem; margin: 0 0 8px; }
+    p { margin: 0 0 14px; color: #b9bfd3; }
+    a.btn, button { display: block; width: 100%; box-sizing: border-box; text-align: center; padding: 12px 16px; margin: 0 0 10px;
+                    border-radius: 10px; border: 0; font: inherit; font-weight: 600; cursor: pointer; text-decoration: none; }
+    a.btn { background: #6c8cff; color: #0f1320; }
+    button { background: #262d44; color: #e6e8ef; }
+    ol { padding-left: 20px; color: #b9bfd3; margin: 0 0 16px; }
+    .new { color: #9db1ff; word-break: break-all; }
+    [hidden] { display: none !important; }
+  </style>
+</head>
+<body>
+<main>
+  <div style="font-size:2rem">💊</div>
+  <h1>GPAT Prep has moved</h1>
+  <p>The app now lives at <a class="new" id="newLink" href="https://kramavriddhi.com/apps/gpat/">kramavriddhi.com/apps/gpat</a>. Please update your bookmark.</p>
+
+  <p id="auto">Taking you there now…</p>
+
+  <section id="saved" hidden>
+    <p><strong>You have saved progress on this old address.</strong> Your browser keeps it separately for each website, so it won't appear on the new address by itself. To bring it with you:</p>
+    <ol>
+      <li>Download your progress below.</li>
+      <li>Open the new address and create your profile.</li>
+      <li>Go to <strong>Settings → Import progress</strong> and choose the downloaded file.</li>
+    </ol>
+    <div id="buttons"></div>
+  </section>
+
+  <a class="btn" id="go" href="https://kramavriddhi.com/apps/gpat/">Open GPAT Prep</a>
+</main>
+<script>
+  // Keep in-app links working: the app uses hash routes like #/topic/dp-posology.
+  var target = 'https://kramavriddhi.com/apps/gpat/' + location.hash;
+  document.getElementById('go').href = target;
+  document.getElementById('newLink').href = target;
+
+  // Progress the old app saved on this origin (see GPAT src/lib/auth.ts).
+  var found = [];
+  try {
+    var profiles = JSON.parse(localStorage.getItem('gpat-prep-profiles-v1') || '[]');
+    profiles.forEach(function (p) {
+      var data = localStorage.getItem('gpat-prep-state-v1::' + p.id);
+      if (data) found.push({ name: p.name || 'profile', data: data });
+    });
+    var legacy = localStorage.getItem('gpat-prep-state-v1');
+    if (legacy) found.push({ name: 'my', data: legacy });
+  } catch (e) { /* storage blocked: nothing to rescue */ }
+
+  if (found.length) {
+    document.getElementById('auto').hidden = true;
+    document.getElementById('saved').hidden = false;
+    var box = document.getElementById('buttons');
+    found.forEach(function (f) {
+      var b = document.createElement('button');
+      b.textContent = 'Download ' + (f.name === 'my' ? 'my' : '"' + f.name + '"') + ' progress';
+      b.onclick = function () {
+        var a = document.createElement('a');
+        a.href = URL.createObjectURL(new Blob([f.data], { type: 'application/json' }));
+        a.download = 'gpat-progress-' + f.name.replace(/[^\w-]+/g, '_') + '.json';
+        document.body.appendChild(a); a.click(); a.remove();
+      };
+      box.appendChild(b);
+    });
+  } else {
+    setTimeout(function () { location.replace(target); }, 1500);
+  }
+</script>
+</body>
+</html>
